@@ -96,5 +96,16 @@ guessThree.addEventListener('click', () => {
     randomPearl('shell3');
 });
 
+const playAgainButton = document.getElementById('play-again-button');
+
+playAgainButton.addEventListener('click', () => {
+    playAgain();
+    console.log('play again');
+});
+
+function playAgain() {
+    gameState = 'guess';
+    loadPage();
+}
 /* Run page load code */
 loadPage();
