@@ -54,29 +54,11 @@ function displayShells() {
         pearl2.classList.add('hidden');
         pearl3.classList.add('hidden');
         shell1.classList.remove('reveal');
-        shell2.classList.remove('reveal');
-        shell3.classList.remove('reveal');
     } else {
         results.classList.remove('hidden');
-        pearl1.classList.remove('hidden');
-        pearl2.classList.remove('hidden');
-        pearl3.classList.remove('hidden');
-        shell1.classList.add('reveal');
-        shell2.classList.add('reveal');
-        shell3.classList.add('reveal');
     }
 }
 // event listeners
-
-// shell1.addEventListener('click', () => {
-//     pearlRandom('');
-// });
-// shell2.addEventListener('click', () => {
-//     pearlRandom('');
-// });
-// shell3.addEventListener('click', () => {
-//     pearlRandom('');
-// });
 
 /* Run page load code */
 loadPage();
