@@ -4,26 +4,33 @@
 /* State */
 let gameState = 'guess';
 
+let total = 2;
+let wins = 1;
+
 /* Actions */
 function loadPage() {
     displayShells();
+    displayScoreboard();
 }
 /* Components */
+
 /* scoreboard */
+
+const totalDisplay = document.getElementById('total-display');
+const winsDisplay = document.getElementById('wins-display');
+const lossesDisplay = document.getElementById('losses-display');
+
+function displayScoreboard() {
+    totalDisplay.textContent = total;
+    winsDisplay.textContent = wins;
+    lossesDisplay.textContent = total - wins;
+}
 
 /* guess */
 
 // get DOM
-const guessShell1 = document.getElementById('shell-1');
-const guessShell2 = document.getElementById('shell-2');
-const guessShell3 = document.getElementById('shell-3');
-// display
 
-// function displayGuess() {
-//     guessShell1.classList.remove('win', 'lose');
-//     guessShell2.classList.remove('win', 'lose');
-//     guessShell3.classList.remove('win', 'lose');
-// }
+// display
 
 //DOM
 const results = document.getElementById('results');
@@ -32,6 +39,8 @@ const results = document.getElementById('results');
 function displayShells() {
     if (gameState === 'guess') {
         results.classList.add('hidden');
+    } else {
+        results.classList.remove('hidden');
     }
 }
 // event listeners
