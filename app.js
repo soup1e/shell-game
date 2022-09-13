@@ -3,9 +3,9 @@ import { getRandomItem } from './utils.js';
 
 /* State */
 let gameState = 'guess';
-let guess = '';
-let reveal = '';
-let result = '';
+let guess = ''; // shell1 2 or 3
+let reveal = ''; // shell1 2 or 3
+let result = ''; // win / lose
 
 let total = 0;
 let wins = 0;
@@ -50,15 +50,17 @@ function randomPearl(userGuess) {
     gameState = 'results';
     guess = userGuess;
     const guessShell = getRandomItem(guesses);
+    console.log(guessShell);
+    console.log(userGuess);
     total++;
 
-    if (guess === reveal) {
+    if (userGuess === guessShell) {
         result = 'win';
         wins++;
     } else {
         result = 'lose';
     }
-
+    console.log(result);
     loadPage();
 }
 
@@ -85,13 +87,13 @@ function displayShells() {
 // event listeners
 
 guessOne.addEventListener('click', () => {
-    randomPearl('shell-1');
+    randomPearl('shell1');
 });
 guessTwo.addEventListener('click', () => {
-    randomPearl('shell-2');
+    randomPearl('shell2');
 });
 guessThree.addEventListener('click', () => {
-    randomPearl('shell-3');
+    randomPearl('shell3');
 });
 
 /* Run page load code */
