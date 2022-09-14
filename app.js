@@ -3,8 +3,6 @@ import { getRandomItem } from './utils.js';
 
 /* State */
 let gameState = 'guess';
-let guess = ''; // shell1 2 or 3
-let reveal = ''; // shell1 2 or 3
 let result = ''; // win / lose
 
 let total = 0;
@@ -27,6 +25,10 @@ const lossesDisplay = document.getElementById('losses-display');
 const guessOne = document.getElementById('guess-1');
 const guessTwo = document.getElementById('guess-2');
 const guessThree = document.getElementById('guess-3');
+
+const display1 = document.getElementById('display-1');
+const display2 = document.getElementById('display-2');
+const display3 = document.getElementById('display-3');
 
 const guessesBox = document.getElementById('guesses');
 
@@ -55,33 +57,52 @@ function randomPearl(userGuess) {
     total++;
 
     if ('shell1' === randomPearl) {
-        shell1.classList.add('reveal');
         pearl1.classList.remove('hidden');
+        shell1.classList.add('reveal');
     }
     if ('shell2' === randomPearl) {
-        shell2.classList.add('reveal');
         pearl2.classList.remove('hidden');
+        shell2.classList.add('reveal');
     }
     if ('shell3' === randomPearl) {
-        shell3.classList.add('reveal');
         pearl3.classList.remove('hidden');
+        shell3.classList.add('reveal');
     }
-
-    const display1 = document.getElementById('display-1');
-    const display2 = document.getElementById('display-2');
-    const display3 = document.getElementById('display-3');
 
     if (userGuess === randomPearl) {
-        result = 'win'; // change text to Found it
+        result = 'win';
         wins++;
+        if ('shell1' === randomPearl) {
+            shell1.classList.add('reveal');
+            pearl1.classList.remove('hidden');
+            display1.textContent = 'Found it!';
+        }
+        if ('shell2' === randomPearl) {
+            shell2.classList.add('reveal');
+            pearl2.classList.remove('hidden');
+            display2.textContent = 'Found it!';
+        }
+        if ('shell3' === randomPearl) {
+            shell3.classList.add('reveal');
+            pearl3.classList.remove('hidden');
+            display3.textContent = 'Found it!';
+        }
     } else {
         result = 'lose';
-        // change text to not here
+        if ('shell1' === userGuess) {
+            display1.textContent = 'Not here!';
+
+            randomPearl;
+        }
+        if ('shell2' === userGuess) {
+            display2.textContent = 'Not here!';
+            shell2.classList.add('reveal');
+        }
+        if ('shell3' === userGuess) {
+            display3.textContent = 'Not here!';
+            shell3.classList.add('reveal');
+        }
     }
-
-    console.log(userGuess, 'guess');
-
-    console.log(randomPearl, 'computer');
 
     loadPage();
 }
@@ -103,6 +124,9 @@ function displayShells() {
         shell1.classList.remove('reveal');
         shell2.classList.remove('reveal');
         shell3.classList.remove('reveal');
+        display1.textContent = '';
+        display2.textContent = '';
+        display3.textContent = '';
     } else {
         results.classList.remove('hidden');
     }
