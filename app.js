@@ -3,7 +3,6 @@ import { getRandomItem } from './utils.js';
 
 /* State */
 let gameState = 'guess';
-let result = ''; // win / lose
 
 let total = 0;
 let wins = 0;
@@ -70,7 +69,6 @@ function randomPearl(userGuess) {
     }
 
     if (userGuess === randomPearl) {
-        result = 'win';
         wins++;
         if ('shell1' === randomPearl) {
             shell1.classList.add('reveal');
@@ -88,7 +86,6 @@ function randomPearl(userGuess) {
             display3.textContent = 'Found it!';
         }
     } else {
-        result = 'lose';
         if ('shell1' === userGuess) {
             display1.textContent = 'Not here!';
 
