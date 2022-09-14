@@ -88,8 +88,7 @@ function randomPearl(userGuess) {
     } else {
         if ('shell1' === userGuess) {
             display1.textContent = 'Not here!';
-
-            randomPearl;
+            shell1.classList.add('reveal');
         }
         if ('shell2' === userGuess) {
             display2.textContent = 'Not here!';
